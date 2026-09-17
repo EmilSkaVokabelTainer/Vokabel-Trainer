@@ -1,1 +1,1 @@
-Hi ich habe einen Vokabel TRainr gemacht wenn er euch hilft liket gerne das prjekt!
+Hi ich habe einen Französisch vokabel TRainer gemacht mit den aktuellen Vokabeln.
