@@ -65,7 +65,7 @@ button,input,textarea,select{font:inherit}button{cursor:pointer}button:disabled{
 </aside>
 <main class="main">
   <header class="topbar">
-    <div class="top-title"><h1 id="pageTitle">Vokabel Trainer</h1><p id="pageSubtitle">Deutsch ↔ Französisch</p></div>
+    <div class="top-title"><h1 id="pageTitle">Vokabel Trainer</h1><p id="pageSubtitle">Deutsch ↔ Französisch · neue Vokabelliste</p></div>
     <div class="top-actions"><button class="btn primary" id="addTop">+ Vokabel</button></div>
   </header>
   <section class="content" id="content"></section>
@@ -76,9 +76,51 @@ button,input,textarea,select{font:inherit}button{cursor:pointer}button:disabled{
 <script>
 "use strict";
 const SEED=[
-["laisser qn tranquille","jdn in Ruhe lassen"],["sérieux/sérieuse","ernst, ernsthaft"],["débrouillard/débrouillarde","geschickt, pfiffig"],["populaire","beliebt"],["malade","krank"],["le voisin / la voisine","der/die (Sitz-)Nachbar/in"],["le sac","die Tasche, auch: die Schultasche"],["le bulletin","das Zeugnis"],["le conseil","der Rat, der Ratschlag"],["le résultat","das Ergebnis, das Resultat"],["le test","der Test"],["le genre (de qc)","die Art"],["le réveil","der Wecker"],["sonner","klingeln"],["plus","mehr"],["sans + inf.","ohne etwas zu tun"],["stresser qn","jdn stressen"],["dire qc (à qn)","(jdm) etwas sagen"],["que","dass"],["devoir + inf.","etwas tun müssen"],["au moins","mindestens, wenigstens"],["à cause de","wegen"],["une impression","ein Eindruck"],["à la place de (qn/qc)","anstelle von (jdm/etw.), statt"],["seul/seule","allein"],["poser une question (à qn)","(jdm) eine Frage stellen"],["une excuse","eine Entschuldigung, auch: eine Ausrede"],["la pression","der Druck"],["mettre la pression à qn","jdn unter Druck setzen"],["le temps","die Zeit"],["dernier/dernière","letzter/letzte/letztes"],["réviser","(etw.) lernen, etw. wiederholen"],["participer en cours","im Unterricht mitarbeiten"],["rendre qc (à qn)","(jdm) etw. zurückgeben"],["mauvais/mauvaise","schlecht"],["la note","die Note"],["la moyenne","der Durchschnitt"]
-].map((x,i)=>({id:"u4-"+(i+1),fr:x[0],de:x[1],tag:"Unité 4",correct:0,wrong:0,box:1,lastLearned:null}));
-const STORAGE="vokabeltrainer_beautiful_v1";
+["passer du temps (avec qn)", "(mit jdm) Zeit verbringen"],
+["le contraire", "das Gegenteil"],
+["demander (qc à qn)", "(jdn nach etw.) fragen, jdn um etw. bitten"],
+["aider qn", "jdm helfen"],
+["attendre qn", "auf jdn warten"],
+["demander qc à qn", "jdn etw. fragen"],
+["mettre la pression à qn", "jdn unter Druck setzen"],
+["téléphoner à qn", "jdn anrufen"],
+["demander si", "fragen, ob"],
+["avoir besoin de qn/qc", "jdn/etw. brauchen"],
+["une aide", "eine Hilfe"],
+["oh là là", "oje"],
+["vouloir savoir si", "wissen wollen, ob"],
+["Je te jure !", "(Ganz) Ehrlich!, Ich schwör's!"],
+["le reste", "der Rest"],
+["faire confiance à qn", "jdm vertrauen"],
+["à mon avis", "meiner Meinung nach"],
+["le système", "das System"],
+["sur", "hier: über"],
+["le stress", "der Stress"],
+["la lettre", "der Buchstabe"],
+["comme", "als"],
+["calculer qc", "etw. berechnen, etw. ausrechnen"],
+["précis/précise", "genau, exakt, klar"],
+["exister", "existieren"],
+["le/la même", "der-/die-/dasselbe, der/die/das Gleiche"],
+["juste", "gerecht"],
+["autre", "anderer/andere/anderes"],
+["penser", "denken"],
+["motivant/motivante", "motivierend"],
+["les gens", "die Leute"],
+["dur/dure", "hart, schwer"],
+["ça veut dire", "das heißt"],
+["la catastrophe", "die Katastrophe"],
+["par contre", "jedoch, allerdings"],
+["entendre qn/qc", "jdn/etw. hören"],
+["avoir la moyenne", "bestehen"],
+["le handball", "Handball, das Handballspielen"],
+["la batterie", "das Schlagzeug"],
+["le repas", "das Essen, die Mahlzeit"],
+["presque", "fast, beinahe"],
+["sauf", "außer, abgesehen von"],
+["végan/végane", "vegan"]
+].map((x,i)=>({id:"new-"+(i+1),fr:x[0],de:x[1],tag:"Unité 4",correct:0,wrong:0,box:1,lastLearned:null}));
+const STORAGE="vokabeltrainer_neue_vokabeln_v2";
 let state=loadState(),page="home",session=null,flipped=false,speedTimer=null,speechAvailable="speechSynthesis" in window;
 function today(){return new Date().toISOString().slice(0,10)}
 function clone(x){return JSON.parse(JSON.stringify(x))}
